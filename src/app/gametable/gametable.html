@@ -1,11 +1,12 @@
 <div class="woodtable">
 
     <div class="thegame">
-        <img src="/assets/cardimg/card_cover.png" alt="">
-        <img src="/assets/cardimg/card_cover.png" alt="">
-        <img src="/assets/cardimg/card_cover.png" alt="">
-        <img src="/assets/cardimg/card_cover.png" alt="">
-        <img src="/assets/cardimg/card_cover.png" alt="">
+        <div class="card-stack">
+            <img [ngStyle]="{'right.px' : i * 5, 'top.px': i * 2}" *ngFor="let c of [0,1,2,3]; let i = index"
+                src="/assets/cardimg/card_cover.png" alt="">
+            <img (click)="takeCard()" [class.take-card]="takeCardAnimation" class="top-card"
+                [ngStyle]="{'right.px' : 20, 'top.px': 8}" src="/assets/cardimg/card_cover.png" alt="">
+        </div>
     </div>
 
 </div>
