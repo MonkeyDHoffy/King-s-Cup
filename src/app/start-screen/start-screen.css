@@ -49,30 +49,30 @@ html {
 }
 
 .playbtn {
-    position: relative;
+    position: absolute;
+    bottom: 5px;
     z-index: 10;
+    width: 250px;
+    height: 200px;
+    background-image: url('/assets/table/9a3df68b-f99a-45d6-a2d4-5e7ff64cc179.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, background-image 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hoverzone {
+    width: 162px;
+    height: 74px;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
-.playbtn:hover {
-    transform: scale(1.1);
+.playbtn:has(.hoverzone:hover) {
+    width: 265px;
+    height: 205px;
+    background-image: url('/assets/table/c23666d5-d136-487d-aa8f-650973fef7d8.png');
 }
 
-.playbtn img {
-    width: 150px;
-    height: auto;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .playbtn img {
-        width: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    .playbtn img {
-        width: 100px;
-    }
-}
