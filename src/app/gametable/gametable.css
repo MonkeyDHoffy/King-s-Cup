@@ -1,0 +1,18 @@
+.woodtable {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    background-image: url('../../assets/table/d30f4768-04c6-42e5-90df-6b28d9d8b8d7.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.thegame {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
