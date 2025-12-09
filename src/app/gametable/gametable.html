@@ -1,12 +1,31 @@
-<div class="woodtable">
+<!-- <div class="woodtable">
 
     <div class="thegame">
         <div class="card-stack">
             <img [ngStyle]="{'right.px' : i * 5, 'top.px': i * 2}" *ngFor="let c of [0,1,2,3]; let i = index"
                 src="/assets/cardimg/card_cover.png" alt="">
-            <img (click)="takeCard()" [class.take-card]="takeCardAnimation" class="top-card"
-                [ngStyle]="{'right.px' : 20, 'top.px': 8}" src="/assets/cardimg/card_cover.png" alt="">
+            <img (click)="takeCard()" class="top-card" [ngStyle]="{'right.px' : 20, 'top.px': 8}"
+                src="/assets/cardimg/card_cover.png" alt="">
+            <img (click)="takeCard()" *ngIf="takeCardAnimation" class="top-card takeCardAnimation"
+                [ngStyle]="{'right.px' : 20, 'top.px': 8}" src="/assets/cardimg/spade_1.png" alt="">
         </div>
     </div>
 
+</div> -->
+
+<div class="woodtable">
+    <div class="thegame">
+        <div class="card-stack">
+            @for (c of [0,1,2,3]; track $index) {
+            <img [ngStyle]="{'right.px' : $index * 5, 'top.px': $index * 2}" src="/assets/cardimg/card_cover.png"
+                alt="">
+            }
+            <img (click)="takeCard()" class="top-card" [ngStyle]="{'right.px' : 20, 'top.px': 8}"
+                src="/assets/cardimg/card_cover.png" alt="">
+            @if (takeCardAnimation) {
+            <img (click)="takeCard()" class="take-card" [ngStyle]="{'right.px' : 20, 'top.px': 8}"
+                src="/assets/cardimg/{{currentCard}}.png" alt="">
+            }
+        </div>
+    </div>
 </div>
