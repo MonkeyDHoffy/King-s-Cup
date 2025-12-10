@@ -33,6 +33,7 @@ export class Gametable {
     this.currentCard = this.game.stack.pop();
     console.log('Card taken:', this.currentCard);
     this.takeCardAnimation = true;
+    this.game.playedCards.push(this.currentCard!);
     setTimeout(() => {
       this.takeCardAnimation = false;     
     }, 1000);
