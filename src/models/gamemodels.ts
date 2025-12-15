@@ -22,8 +22,6 @@ shuffleArray(this.stack);
   
 
 
-
-
 }
 
   function shuffleArray(stack: any[]) {

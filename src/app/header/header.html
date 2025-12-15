@@ -1,0 +1,24 @@
+<mat-toolbar class="header">
+    <div class="header-content">
+        <div class="logo">
+            <mat-icon class="crown-icon">emoji_events</mat-icon>
+            <span class="game-title">King's Cup</span>
+        </div>
+
+        <div class="header-actions">
+            <button mat-icon-button class="header-btn" aria-label="Info">
+                <mat-icon>info</mat-icon>
+            </button>
+            <button mat-icon-button class="header-btn" aria-label="Settings">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <button (click)="openDialog()" mat-raised-button class="header-add-btn" aria-label="Add Player">
+                <mat-icon>add</mat-icon>
+                Add Player
+            </button>
+            <button mat-raised-button class="header-new-game-btn" aria-label="New Game">
+                Start Game
+            </button>
+        </div>
+    </div>
+</mat-toolbar>

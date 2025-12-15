@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameModel } from '../../models/gamemodels';
+import { Player } from '../player/player';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { Header } from "../header/header";
+
 
 @Component({
   selector: 'app-gametable',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Player, MatButtonModule, MatIconModule, Header],
   templateUrl: './gametable.html',
   styleUrl: './gametable.scss',
 })
@@ -15,7 +20,7 @@ export class Gametable {
   game: GameModel;
   currentCard: string | undefined = '';
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.game = new GameModel();
   }
 
@@ -39,6 +44,20 @@ export class Gametable {
     }, 1000);
   }
 }
+
+openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: {name: this.name(), animal: this.animal()},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        this.animal.set(result);
+      }
+    });
+  }
+
 
 
 }

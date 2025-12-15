@@ -1,0 +1,102 @@
+.header {
+    background: linear-gradient(135deg, #8B0000 0%, #B8860B 50%, #8B0000 100%) !important;
+    border-bottom: 3px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    color: #FFD700 !important;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    .crown-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+        color: #FFD700;
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+    }
+    
+    .game-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #FFD700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        letter-spacing: 1px;
+    }
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.header-btn {
+    color: #FFD700 !important;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: scale(1.1);
+        background: rgba(255, 215, 0, 0.2) !important;
+    }
+    
+    mat-icon {
+        font-size: 24px;
+    }
+}
+
+.header-add-btn {
+    background: #FFD700 !important;
+    color: #8B0000 !important;
+    font-weight: bold;
+    border: 2px solid #8B4513;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.6);
+    }
+    
+    mat-icon {
+        margin-right: 5px;
+    }
+}
+
+.header-new-game-btn {
+    background: #FFD700 !important;
+    color: #8B0000 !important;
+    font-weight: bold;
+    border: 2px solid #8B4513;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.6);
+    }
+    
+    mat-icon {
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 18px;
+    }
+    
+    .header-btn span {
+        display: none;
+    }
+}
