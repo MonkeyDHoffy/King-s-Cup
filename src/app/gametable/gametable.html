@@ -16,7 +16,11 @@
 <app-header (addPlayerClick)="openDialog()" style="position:absolute; top: 0; left: 0; width: 100%;"></app-header>
 
 @for (player of game.players; track $index) {
-<app-player class="player-position" [ngStyle]="{'top.px' : 130 + $index * 160}" [name]="player"></app-player>
+@if ($index > 3) {
+<app-player class="player-position-left" [ngStyle]="{'top.px' : 130 + ($index - 4) * 160}" [name]="player"></app-player>
+} @else {
+<app-player class="player-position-right" [ngStyle]="{'top.px' : 130 + $index * 160}" [name]="player"></app-player>
+}
 }
 
 

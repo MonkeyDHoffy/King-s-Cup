@@ -79,7 +79,12 @@
     }
 }
 
-.player-position {
+.player-position-right {
     position: absolute;
   right: 0;
+}
+
+.player-position-left {
+    position: absolute !important;
+    left: 0 !important;
 }

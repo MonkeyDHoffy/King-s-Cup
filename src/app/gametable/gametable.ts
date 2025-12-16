@@ -47,16 +47,19 @@ export class Gametable {
     }
   }
 
-  
+
   openDialog(): void {
-   const dialogRef = this.dialog.open(AddPlayerDialog);
-console.log('Dialog opened');
+    const dialogRef = this.dialog.open(AddPlayerDialog);
+    console.log('Dialog opened');
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    
+      if (result && this.game.players.length < 8) {
+        this.game.players.push(result);
+        console.log('The dialog was closed with result:', result);
+      } else if (result) {
+        alert('Maximum number of players (8) reached!');
+        console.log('Max players reached, ignoring additional player');
+      }
     });
   }
-
-  
-
 }
