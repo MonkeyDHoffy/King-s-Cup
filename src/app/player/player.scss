@@ -29,3 +29,10 @@ background: linear-gradient(135deg, #8B0000 0%, #B8860B 50%, #8B0000 100%);
     border-bottom-right-radius: 50px;
 }
 
+.player-active {
+    box-shadow: 0 0 20px 5px #FFD700;
+    transform: scale(1.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-color: #B8860B;
+}
+

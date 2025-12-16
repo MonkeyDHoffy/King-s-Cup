@@ -17,9 +17,11 @@
 
 @for (player of game.players; track $index) {
 @if ($index > 3) {
-<app-player class="player-position-left" [ngStyle]="{'top.px' : 130 + ($index - 4) * 160}" [name]="player"></app-player>
+<app-player [playerActive]="$index == game.currentPlayer" class="player-position-left"
+    [ngStyle]="{'top.px' : 130 + ($index - 4) * 160}" [name]="player"></app-player>
 } @else {
-<app-player class="player-position-right" [ngStyle]="{'top.px' : 130 + $index * 160}" [name]="player"></app-player>
+<app-player [playerActive]="$index == game.currentPlayer" class="player-position-right"
+    [ngStyle]="{'top.px' : 130 + $index * 160}" [name]="player"></app-player>
 }
 }
 
@@ -38,7 +40,8 @@
                 src="/assets/cardimg/{{currentCard}}.png" alt="">
             }
             @for(card of game.playedCards; track $index) {
-            <img [ngStyle]="{'right.px' : 20, 'top.px': $index >= 3 ? -6 : $index * -2}" class="played-card"
+            <img [ngStyle]="{'right.px' : 20, 'top.px': $index >= 3 ? -6 : $index * -2}"
+                [class.last-played-card]="$index === game.playedCards.length - 1" class="played-card"
                 src="/assets/cardimg/{{card}}.png" alt="">
             }
         </div>

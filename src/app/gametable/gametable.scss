@@ -44,10 +44,12 @@
     transition: all 125ms ease-in-out;
     // transform: scale(1.5) !important;
     animation: takeCardAnimation 0.5s ease-in-out;
-    transform: translateY(0) scale(1) translateX(300px);
+    transform: translateY(0) scale(1) translateX(300px) rotate(20deg);
     box-shadow: 0 100px 200px rgba(0, 0, 0, 0.3);
     z-index: 1000;
 }
+
+// rotate(20deg)
 
 .played-card {
     position: absolute;
@@ -56,6 +58,12 @@
     transform: translateY(0) scale(1) translateX(300px);
     opacity: 0;
     animation: fadeIn 0.1s ease-in-out 0.5s forwards;
+}
+
+.last-played-card {
+    position: absolute;
+    width: 120px;
+    transform: translateY(0) scale(1) translateX(300px) rotate(20deg) !important;
 }
 
 @keyframes fadeIn {
@@ -75,7 +83,7 @@
         transform: scale(1.5);
     }
     100% {
-        transform: translateY(0) scale(1) translateX(300px);
+        transform: translateY(0) scale(1) translateX(300px) rotate(20deg);
     }
 }
 

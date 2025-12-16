@@ -41,6 +41,8 @@ export class Gametable {
       console.log('Card taken:', this.currentCard);
       this.takeCardAnimation = true;
       this.game.playedCards.push(this.currentCard!);
+      // Nächsten Spieler aktivieren 
+      this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
       setTimeout(() => {
         this.takeCardAnimation = false;     
       }, 1000);
@@ -51,12 +53,11 @@ export class Gametable {
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPlayerDialog);
     console.log('Dialog opened');
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && this.game.players.length < 8) {
-        this.game.players.push(result);
-        console.log('The dialog was closed with result:', result);
-      } else if (result) {
+    dialogRef.afterClosed().subscribe((name: string) => {
+      if (name && this.game.players.length < 8) {
+        this.game.players.push(name);
+        console.log('The dialog was closed with result:', name);
+      } else if (name) {
         alert('Maximum number of players (8) reached!');
         console.log('Max players reached, ignoring additional player');
       }
