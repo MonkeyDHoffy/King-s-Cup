@@ -1,0 +1,14 @@
+<div class="dialog-container">
+    <h2 mat-dialog-title class="dialog-title">Add Player</h2>
+    <mat-dialog-content class="dialog-content">
+        <mat-form-field appearance="outline" class="player-input">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="name" placeholder="Enter name" autofocus maxlength="20">
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions class="dialog-actions">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button [mat-dialog-close]="name" [disabled]="!name.trim()" cdkFocusInitial
+            class="add-btn">Add</button>
+    </mat-dialog-actions>
+</div>

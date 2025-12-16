@@ -1,0 +1,56 @@
+  .dialog-container {
+        background: white;
+        border: 2px solid #FFD700;
+        border-radius: 8px;
+        padding: 0;
+    }
+
+    .dialog-title {
+        background: linear-gradient(135deg, #8B0000, #B8860B);
+        color: #FFD700 !important;
+        text-align: center;
+        margin: 0 !important;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .dialog-content {
+        min-width: 320px;
+        padding: 25px !important;
+    }
+
+    .player-input {
+        width: 100%;
+
+        ::ng-deep .mdc-text-field__input {
+            margin-left: 10px;
+        }
+    }
+
+    .dialog-actions {
+        padding: 0 20px 20px !important;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .add-btn {
+        background: #FFD700 !important;
+        color: #8B0000 !important;
+        font-weight: 600;
+
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .dialog-content {
+            min-width: 300px;
+        }
+
+        .dialog-title {
+            font-size: 20px;
+        }
+    }

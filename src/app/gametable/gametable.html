@@ -13,7 +13,7 @@
 
 </div> -->
 
-<app-header style="position:absolute; top: 0; left: 0; width: 100%;"></app-header>
+<app-header (addPlayerClick)="openDialog()" style="position:absolute; top: 0; left: 0; width: 100%;"></app-header>
 
 @for (player of game.players; track $index) {
 <app-player class="player-position" [ngStyle]="{'top.px' : 130 + $index * 160}" [name]="player"></app-player>
