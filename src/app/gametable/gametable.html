@@ -40,9 +40,8 @@
                 src="/assets/cardimg/{{currentCard}}.png" alt="">
             }
             @for(card of game.playedCards; track $index) {
-            <img [ngStyle]="{'right.px' : 20, 'top.px': $index >= 3 ? -6 : $index * -2}"
-                [class.last-played-card]="$index === game.playedCards.length - 1" class="played-card"
-                src="/assets/cardimg/{{card}}.png" alt="">
+            <img [ngStyle]="{'right.px' : 20}" [class.last-played-card]="$index === game.playedCards.length - 1"
+                class="played-card" src="/assets/cardimg/{{card}}.png" alt="">
             }
         </div>
     </div>
