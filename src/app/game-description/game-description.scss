@@ -1,0 +1,42 @@
+.game-desc-card {
+  max-width: 380px;
+  margin: 12px;
+  padding: 10px 14px;
+  border: 3px solid #FFD700;               /* königlicher Goldrand */
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8B0000 0%, #B8860B 50%, #8B0000 100%); /* Rot–Gold Verlauf */
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.45),
+    0 0 14px rgba(255, 215, 0, 0.25);      /* dezenter Gold-Glow */
+  color: #FFD700;
+}
+
+/* Header/Title veredeln */
+.game-desc-card .mat-mdc-card-header {
+  padding: 6px 0 10px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.35);
+  margin-bottom: 8px;
+}
+
+.game-desc-card .mat-mdc-card-title {
+  font-weight: 800;
+  color: #FFD700;                          /* Gold */
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+}
+
+/* Content auf dunklem Overlay für bessere Lesbarkeit */
+.game-desc-card .mat-mdc-card-content {
+  background: rgba(44, 24, 16, 0.35);      /* dunkles, warmes Overlay */
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.game-desc-card p {
+  margin: 4px 0 0;
+  color: #FFF8DC;                          /* warmes, gut lesbares Off-White */
+  line-height: 1.45;
+  font-size: 14px;
+}

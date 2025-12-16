@@ -7,12 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { Header } from "../header/header";
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlayerDialog } from '../add-player-dialog/add-player-dialog';
+import { GameDescription } from "../game-description/game-description";
 
 
 @Component({
   selector: 'app-gametable',
   standalone: true,
-  imports: [CommonModule, Player, MatButtonModule, MatIconModule, Header],
+  imports: [CommonModule, Player, MatButtonModule, MatIconModule, Header, GameDescription],
   templateUrl: './gametable.html',
   styleUrl: './gametable.scss',
 })
