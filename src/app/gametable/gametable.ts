@@ -10,6 +10,8 @@ import { AddPlayerDialog } from '../add-player-dialog/add-player-dialog';
 import { GameDescription } from "../game-description/game-description";
 
 
+
+
 @Component({
   selector: 'app-gametable',
   standalone: true,

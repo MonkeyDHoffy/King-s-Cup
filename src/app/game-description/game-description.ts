@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { GameModel } from '../../models/gamemodels';
 
 @Component({
   selector: 'app-game-description',
@@ -10,8 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './game-description.scss',
 })
 export class GameDescription {
-
-
       cardAction = [
     { title: 'Waterfall', description: 'Everyone has to start drinking at the same time. As soon as player 1 stops drinking, player 2 may stop drinking. Player 3 may stop as soon as player 2 stops drinking, and so on.' },
     { title: 'You', description: 'You decide who drinks' },
@@ -28,4 +27,23 @@ export class GameDescription {
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ]
 
+  title: string = '';
+  description: string = '';
+  @Input() card: string | undefined;
+
+  ngOnInit(): void {
+    console.log('GameDescription initialized with card:', this.card);
+  }
+
+  ngOnChanges(): void {
+    if (this.card) {  
+console.log('GameDescription detected card change:', this.card); 
+console.log('Extracted card number:', this.card ? this.card.split('_')[1] : 'none');  
+let cardNumber = +this.card!.split('_')[1];
+this.title = this.cardAction[cardNumber - 1].title;
+this.description = this.cardAction[cardNumber - 1].description;
 }
+  }
+
+}
+  
