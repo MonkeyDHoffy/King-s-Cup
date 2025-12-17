@@ -43,8 +43,7 @@ export class Gametable {
       this.currentCard = this.game.stack.pop();
       console.log('Card taken:', this.currentCard);
       this.takeCardAnimation = true;
-      this.game.playedCards.push(this.currentCard!);
-      // Nächsten Spieler aktivieren 
+      this.game.playedCards.push(this.currentCard!); 
       this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
       setTimeout(() => {
         this.takeCardAnimation = false;     
