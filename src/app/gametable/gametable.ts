@@ -8,7 +8,7 @@ import { Header } from "../header/header";
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlayerDialog } from '../add-player-dialog/add-player-dialog';
 import { GameDescription } from "../game-description/game-description";
-
+import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
 
 
 
@@ -25,16 +25,22 @@ export class Gametable {
   game: GameModel;
   currentCard: string | undefined = '';
 
-  constructor(public dialog: MatDialog) {
+  constructor(private firestore: Firestore, public dialog: MatDialog) {
     this.game = new GameModel();
   }
 
   ngOnInit(): void {
     this.newGame();
+    const gamesRef = collection(this.firestore, 'games');
+    collectionData(gamesRef).subscribe((games: any) => {
+      console.log('Games from Firestore:', games);
+    });
   }
 
-  newGame() {
+  async newGame() {
     this.game = new GameModel();
+    const gamesRef = collection(this.firestore, 'games');
+    await addDoc(gamesRef, this.game.toJson());
     console.log('New game started', this.game);
   }
 
