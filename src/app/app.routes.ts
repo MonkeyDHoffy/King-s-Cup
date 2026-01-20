@@ -5,5 +5,5 @@ import { Gametable } from './gametable/gametable';
 
 export const routes: Routes = [
     { path: '', component: StartScreen },
-    {path: 'gametableX', component: Gametable}
+    {path: 'gametableX/:id', component: Gametable}
 ];
