@@ -8,7 +8,7 @@ import { Header } from "../header/header";
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlayerDialog } from '../add-player-dialog/add-player-dialog';
 import { GameDescription } from "../game-description/game-description";
-import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, addDoc, doc, docData } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -31,13 +31,19 @@ export class Gametable {
   }
 
   ngOnInit(): void {
-    // this.newGame();
+    this.newGame();
     this.route.params.subscribe((params)=>{
       console.log('Route parameter id:', params['id']);
-    }); 
-    const gamesRef = collection(this.firestore, 'games');
-    collectionData(gamesRef).subscribe((games: any) => {
-      console.log('Games from Firestore:', games);
+      const gameDocRef = doc(this.firestore, 'games', params['id']);
+      docData(gameDocRef).subscribe((game: any) => {
+        console.log('Game data from Firestore:', game);
+        if (game) {
+          this.game.players = game.players || [];
+          this.game.stack = game.stack || [];
+          this.game.playedCards = game.playedCards || [];
+          this.game.currentPlayer = game.currentPlayer || 0;
+        }
+      });
     });
   }
 
