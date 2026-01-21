@@ -10,22 +10,87 @@ import { GameModel } from '../../models/gamemodels';
   templateUrl: './game-description.html',
   styleUrl: './game-description.scss',
 })
-export class GameDescription {
-      cardAction = [
-    { title: 'Waterfall', description: 'Everyone has to start drinking at the same time. As soon as player 1 stops drinking, player 2 may stop drinking. Player 3 may stop as soon as player 2 stops drinking, and so on.' },
-    { title: 'You', description: 'You decide who drinks' },
-    { title: 'Me', description: 'Congrats! Drink a shot!' },
-    { title: 'Category', description: 'Come up with a category (e.g. Colors). Each player must enumerate one item from the category.' },
-    { title: 'Bust a jive', description: 'Player 1 makes a dance move. Player 2 repeats the dance move and adds a second one. ' },
-    { title: 'Chicks', description: 'All girls drink.' },
-    { title: 'Heaven', description: 'Put your hands up! The last player drinks!' },
-    { title: 'Mate', description: 'Pick a mate. Your mate must always drink when you drink and the other way around.' },
-    { title: 'Thumbmaster', description: '' },
-    { title: 'Men', description: 'All men drink.' },
-    { title: 'Quizmaster', description: '' },
-    { title: 'Never have i ever...', description: 'Say something you nnever did. Everyone who did it has to drink.' },
-    { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
-  ]
+// export class GameDescription {
+//       cardAction = [
+//     { title: 'Waterfall', description: 'Everyone has to start drinking at the same time. As soon as player 1 stops drinking, player 2 may stop drinking. Player 3 may stop as soon as player 2 stops drinking, and so on.' },
+//     { title: 'You', description: 'You decide who drinks' },
+//     { title: 'Me', description: 'Congrats! Drink a shot!' },
+//     { title: 'Category', description: 'Come up with a category (e.g. Colors). Each player must enumerate one item from the category.' },
+//     { title: 'Bust a jive', description: 'Player 1 makes a dance move. Player 2 repeats the dance move and adds a second one. ' },
+//     { title: 'Chicks', description: 'All girls drink.' },
+//     { title: 'Heaven', description: 'Put your hands up! The last player drinks!' },
+//     { title: 'Mate', description: 'Pick a mate. Your mate must always drink when you drink and the other way around.' },
+//     { title: 'Thumbmaster', description: '' },
+//     { title: 'Men', description: 'All men drink.' },
+//     { title: 'Quizmaster', description: '' },
+//     { title: 'Never have i ever...', description: 'Say something you nnever did. Everyone who did it has to drink.' },
+//     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
+//   ]
+
+  export class GameDescription {
+  cardAction = [
+    {
+      title: 'Waterfall',
+      description:
+        'Everyone starts doing jumping jacks at the same time. Player 1 may stop at any time. Player 2 may stop once player 1 stops, player 3 after player 2, and so on.',
+    },
+    {
+      title: 'You',
+      description: 'Choose one player who has to do 10 squats.',
+    },
+    {
+      title: 'Me',
+      description: 'Congrats! Do 10 push-ups.',
+    },
+    {
+      title: 'Category',
+      description:
+        'Pick a fitness category (e.g. Leg exercises). Each player must name one exercise. The first to fail does 10 squats.',
+    },
+    {
+      title: 'Bust a jive',
+      description:
+        'Player 1 starts with one exercise (e.g. 5 squats). Player 2 repeats it and adds another exercise. This continues until someone forgets an exercise.',
+    },
+    {
+      title: 'Chicks',
+      description: 'All female players do 10 squats.',
+    },
+    {
+      title: 'Heaven',
+      description: 'Raise your hands! The last player to do so performs 10 jumping jacks.',
+    },
+    {
+      title: 'Mate',
+      description:
+        'Pick a mate. Whenever you have to do an exercise, your mate must do it as well, and vice versa.',
+    },
+    {
+      title: 'Thumbmaster',
+      description:
+        'You are the Thumbmaster. At any time, place your thumb on the table. The last player to copy you does 5 push-ups.',
+    },
+    {
+      title: 'Men',
+      description: 'All male players do 10 push-ups.',
+    },
+    {
+      title: 'Quizmaster',
+      description:
+        'You are the Quizmaster. If someone answers a question you ask, they must do 5 squats.',
+    },
+    {
+      title: 'Never have I ever...',
+      description:
+        'Say something you have never done. Everyone who has done it must do 10 jumping jacks.',
+    },
+    {
+      title: 'Rule',
+      description:
+        'Make a rule. Anyone who breaks it must do 5 push-ups.',
+    },
+  ];
+
 
   title: string = '';
   description: string = '';
