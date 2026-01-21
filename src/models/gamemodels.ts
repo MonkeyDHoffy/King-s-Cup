@@ -1,8 +1,12 @@
+import { take } from "rxjs";
+
 export class GameModel {
     public players:string[] = [];
     public stack:string[] = [];
     public playedCards:string[] = [];
     public currentPlayer:number = 0;
+    public takeCardAnimation = false;
+    currentCard: string | undefined = '';
 
 
 constructor() {
@@ -20,7 +24,10 @@ return {
 players: this.players,
 stack: this.stack,
 playedCards: this.playedCards,
-currentPlayer: this.currentPlayer
+currentPlayer: this.currentPlayer,
+takeCardAnimation: this.takeCardAnimation,
+currentCard: this.currentCard
+
 };
 }
   

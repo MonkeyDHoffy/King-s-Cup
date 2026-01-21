@@ -8,7 +8,7 @@ import { Header } from "../header/header";
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlayerDialog } from '../add-player-dialog/add-player-dialog';
 import { GameDescription } from "../game-description/game-description";
-import { Firestore, collection, collectionData, addDoc, doc, docData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, addDoc, doc, docData, updateDoc, setDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -25,6 +25,7 @@ export class Gametable {
   takeCardAnimation = false;
   game: GameModel;
   currentCard: string | undefined = '';
+  gameId: string | undefined = '';
 
   constructor(private route: ActivatedRoute, private firestore: Firestore, public dialog: MatDialog) {
     this.game = new GameModel();
@@ -32,13 +33,13 @@ export class Gametable {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const gameId = params['id'];
-      console.log('Route parameter id:', gameId);
-      if (!gameId) {
+     this.gameId = params['id'];
+      console.log('Route parameter id:', this.gameId);
+      if (!this.gameId) {
         console.warn('No game id in route; skip Firestore load.');
         return;
       }
-      const gameDocRef = doc(this.firestore, 'games', gameId);
+      const gameDocRef = doc(this.firestore, 'games', this.gameId);
       docData(gameDocRef).subscribe((game: any) => {
         console.log('Game data from Firestore:', game);
         if (game) {
@@ -46,6 +47,9 @@ export class Gametable {
           this.game.stack = Array.isArray(game.stack) ? game.stack : [];
           this.game.playedCards = Array.isArray(game.playedCards) ? game.playedCards : [];
           this.game.currentPlayer = Number.isInteger(game.currentPlayer) ? game.currentPlayer : 0;
+          this.game.takeCardAnimation = !!game.takeCardAnimation;
+          this.game.currentCard = game.currentCard || '';
+          console.log('Game state initialized:', this.game);
         }
       });
     });
@@ -60,16 +64,23 @@ export class Gametable {
   }
 
   takeCard() {
-    if(!this.takeCardAnimation){
-      this.currentCard = this.game.stack.pop();
-      console.log('Card taken:', this.currentCard);
-      this.takeCardAnimation = true;
-      this.game.playedCards.push(this.currentCard!); 
-      this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
-      setTimeout(() => {
-        this.takeCardAnimation = false;     
-      }, 1000);
-    }
+    if (this.game.takeCardAnimation) return;
+    if (!this.game.stack.length) return;
+    
+    this.game.currentCard = this.game.stack.pop()!;
+    console.log('Card taken:', this.game.currentCard);
+    this.game.takeCardAnimation = true;
+    this.game.playedCards.push(this.game.currentCard);
+    this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+    
+    // Speichere SOFORT mit Animation = true
+    this.saveGame();
+    
+    // Setze Animation erst nach 2-3 Sekunden zurück
+    setTimeout(() => {
+      this.game.takeCardAnimation = false;
+      this.saveGame();
+    }, 2500);
   }
 
 
@@ -84,6 +95,18 @@ export class Gametable {
         alert('Maximum number of players (8) reached!');
         console.log('Max players reached, ignoring additional player');
       }
+      this.saveGame()
     });
   }
+
+async saveGame() {
+  if (!this.gameId) {
+    console.warn('No game id; skip save.');
+    return;
+  }
+  const gameDocRef = doc(this.firestore, 'games', this.gameId);
+  await setDoc(gameDocRef, this.game.toJson(), { merge: true });
+}
+
+
 }

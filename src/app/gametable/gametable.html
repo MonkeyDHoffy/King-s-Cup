@@ -35,9 +35,8 @@
             }
             <img (click)="takeCard()" class="top-card" [ngStyle]="{'right.px' : 20, 'top.px': -8}"
                 src="/assets/cardimg/card_cover.png" alt="">
-            @if (takeCardAnimation) {
-            <img (click)="takeCard()" class="take-card" [ngStyle]="{'right.px' : 20}"
-                src="/assets/cardimg/{{currentCard}}.png" alt="">
+            @if (game.takeCardAnimation) {
+            <img class="take-card" [ngStyle]="{'right.px' : 20}" src="/assets/cardimg/{{game.currentCard}}.png" alt="">
             }
             @for(card of game.playedCards; track $index) {
             <img [ngStyle]="{'right.px' : 20}" [class.last-played-card]="$index === game.playedCards.length - 1"
@@ -45,7 +44,7 @@
             }
         </div>
 
-        <app-game-description [card]="currentCard"
+        <app-game-description [card]="game.currentCard"
             style="position: absolute; bottom: 10%; width: 50vh;"></app-game-description>
 
     </div>
