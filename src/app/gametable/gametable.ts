@@ -31,17 +31,21 @@ export class Gametable {
   }
 
   ngOnInit(): void {
-    this.newGame();
-    this.route.params.subscribe((params)=>{
-      console.log('Route parameter id:', params['id']);
-      const gameDocRef = doc(this.firestore, 'games', params['id']);
+    this.route.params.subscribe((params) => {
+      const gameId = params['id'];
+      console.log('Route parameter id:', gameId);
+      if (!gameId) {
+        console.warn('No game id in route; skip Firestore load.');
+        return;
+      }
+      const gameDocRef = doc(this.firestore, 'games', gameId);
       docData(gameDocRef).subscribe((game: any) => {
         console.log('Game data from Firestore:', game);
         if (game) {
-          this.game.players = game.players || [];
-          this.game.stack = game.stack || [];
-          this.game.playedCards = game.playedCards || [];
-          this.game.currentPlayer = game.currentPlayer || 0;
+          this.game.players = Array.isArray(game.players) ? game.players : [];
+          this.game.stack = Array.isArray(game.stack) ? game.stack : [];
+          this.game.playedCards = Array.isArray(game.playedCards) ? game.playedCards : [];
+          this.game.currentPlayer = Number.isInteger(game.currentPlayer) ? game.currentPlayer : 0;
         }
       });
     });
